@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSP Control Solution Selector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="gradient-bg"></div>
+  
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" opacity="0.2"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 7L12 12L22 7L12 2L2 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="main-title">DSP Control Solution Configurator</h1>
+          <p class="version-tag">Version 1.1.3</p>
+        </div>
+      </div>
+      <p class="subtitle">System Configurator for VRV, SkyAir, and RA</p>
+      <div class="disclaimer">
+        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        This is for general reference only. Please refer to the original controller catalogs/datasheets for accurate details.
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Step 1: Air-con Selection -->
+    <section class="card step-card">
+      <div class="card-header">
+        <div class="step-indicator">
+          <span class="step-number">1</span>
+          <div class="step-info">
+            <h2>Select Air-con Types & Quantities</h2>
+            <p class="step-description">Choose your system types and enter unit counts</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="aircon-selection-grid">
+        <div class="aircon-row" data-type="vrv">
+          <label class="checkbox-container">
+            <input type="checkbox" name="aircon" value="vrv">
+            <span class="checkmark"></span>
+            <span class="aircon-label">
+              <span class="aircon-name">VRV</span>
+              <span class="aircon-desc">VRV System</span>
+            </span>
+          </label>
+          <div class="input-group">
+            <div class="field">
+              <label>CU</label>
+              <input type="number" id="qty_cu_vrv" placeholder="0" min="0">
+            </div>
+            <div class="field">
+              <label>FCU</label>
+              <input type="number" id="qty_fcu_vrv" placeholder="0" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="aircon-row" data-type="skyair_f1f2">
+          <label class="checkbox-container">
+            <input type="checkbox" name="aircon" value="skyair_f1f2">
+            <span class="checkmark"></span>
+            <span class="aircon-label">
+              <span class="aircon-name">SkyAir (with F1/F2)</span>
+              <span class="aircon-desc">With communication F1/F2 ports</span>
+            </span>
+          </label>
+          <div class="input-group">
+            <div class="field">
+              <label>FCU</label>
+              <input type="number" id="qty_fcu_skyair_f1f2" placeholder="0" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="aircon-row" data-type="skyair_no_f1f2">
+          <label class="checkbox-container">
+            <input type="checkbox" name="aircon" value="skyair_no_f1f2">
+            <span class="checkmark"></span>
+            <span class="aircon-label">
+              <span class="aircon-name">SkyAir (w/o F1/F2)</span>
+              <span class="aircon-desc">Without communication F1/F2 ports</span>
+            </span>
+          </label>
+          <div class="input-group">
+            <div class="field">
+              <label>FCU</label>
+              <input type="number" id="qty_fcu_skyair_no_f1f2" placeholder="0" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="aircon-row" data-type="ra_wifi">
+          <label class="checkbox-container">
+            <input type="checkbox" name="aircon" value="ra_wifi">
+            <span class="checkmark"></span>
+            <span class="aircon-label">
+              <span class="aircon-name">RA (with Wi-Fi adapter)</span>
+              <span class="aircon-desc">RA unit with built-in Dmobile Wifi Card</span>
+            </span>
+          </label>
+          <div class="input-group">
+            <div class="field">
+              <label>FCU</label>
+              <input type="number" id="qty_fcu_ra_wifi" placeholder="0" min="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="aircon-row" data-type="ra_nowifi">
+          <label class="checkbox-container">
+            <input type="checkbox" name="aircon" value="ra_nowifi">
+            <span class="checkmark"></span>
+            <span class="aircon-label">
+              <span class="aircon-name">RA (w/o Wi-Fi)</span>
+              <span class="aircon-desc">RA unit without Dmobile Wifi Card</span>
+            </span>
+          </label>
+          <div class="input-group">
+            <div class="field">
+              <label>FCU</label>
+              <input type="number" id="qty_fcu_ra_nowifi" placeholder="0" min="0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: Category Selection -->
+    <section class="card step-card">
+      <div class="card-header">
+        <div class="step-indicator">
+          <span class="step-number">2</span>
+          <div class="step-info">
+            <h2>Solution Category</h2>
+            <p class="step-description">Choose between Daikin or third-party solutions</p>
+          </div>
+        </div>
+      </div>
+      <div class="category-selection">
+        <label class="radio-card">
+          <input type="radio" id="cat_daikin" name="category" checked>
+          <span class="radio-card-content">
+            <span class="radio-circle"></span>
+            <span class="radio-label">
+              <span class="radio-title">Daikin Solution</span>
+              <span class="radio-desc">Official Daikin controllers</span>
+            </span>
+          </span>
+        </label>
+        <label class="radio-card">
+          <input type="radio" id="cat_3rdparty" name="category">
+          <span class="radio-card-content">
+            <span class="radio-circle"></span>
+            <span class="radio-label">
+              <span class="radio-title">3rd Party Solution</span>
+              <span class="radio-desc">BACnet, Modbus, Dry Contact</span>
+            </span>
+          </span>
+        </label>
+      </div>
+    </section>
+    
+    <!-- Step 3: Features -->
+    <section class="card step-card" id="features-section">
+      <div class="card-header">
+        <div class="step-indicator">
+          <span class="step-number">3</span>
+          <div class="step-info">
+            <h2>Required Features</h2>
+            <p class="step-description">Select features needed for your installation</p>
+          </div>
+        </div>
+      </div>
+      <div class="feature-hint">
+        <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 16v-4M12 8h.01"></path>
+        </svg>
+        <span>If no features selected: System will show all compatible controller solutions.</span>
+      </div>
+      <div class="features-grid">
+        <label class="feature-chip">
+          <input type="checkbox" id="feat_timer">
+          <span class="feature-content">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span class="feature-text">Schedule Timer</span>
+          </span>
+        </label>
+        <label class="feature-chip">
+          <input type="checkbox" id="feat_touch">
+          <span class="feature-content">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 18H6a4 4 0 01-4-4V6a4 4 0 014-4h12a4 4 0 014 4v4"></path>
+              <path d="M18 14v7M15 18h6"></path>
+            </svg>
+            <span class="feature-text">Touch Screen</span>
+          </span>
+        </label>
+        <label class="feature-chip">
+          <input type="checkbox" id="feat_mobile">
+          <span class="feature-content">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+            <span class="feature-text">Mobile App</span>
+          </span>
+        </label>
+        <label class="feature-chip">
+          <input type="checkbox" id="feat_web">
+          <span class="feature-content">
+            <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="feature-text">Web/Window App</span>
+          </span>
+        </label>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="btnFind" class="btn-primary">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        Find Solutions
+      </button>
+      <button id="btnReset" class="btn-ghost">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="1 4 1 10 7 10"></polyline>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+        </svg>
+        Reset All
+      </button>
+    </div>
+
+    <!-- Results Container -->
+    <div id="results" class="results-container"></div>
+  </main>
+
+  <footer class="footer">
+    <p>Developed by DSP Control team</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
