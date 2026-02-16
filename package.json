@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "echo 'Web assets ready'",
-    "ionic:build": "echo 'Building web assets'",
+    "ionic:build": "npm run build",
+    "appflow:build": "npm run build && (npx cap add android || echo 'Already added')",
     "capacitor:sync:before": "npx cap add android || echo 'Android already exists'"
   },
   "dependencies": {
