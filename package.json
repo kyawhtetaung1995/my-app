@@ -2,7 +2,9 @@
   "name": "my-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'Web assets ready'"
+    "build": "echo 'Web assets ready'",
+    "ionic:build": "echo 'Building web assets'",
+    "capacitor:sync:before": "npx cap add android || echo 'Android already exists'"
   },
   "dependencies": {
     "@capacitor/android": "^6.0.0",
