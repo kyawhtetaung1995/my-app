@@ -1,6 +1,8 @@
 {
-  "appId": "com.yourname.myapp",
-  "appName": "My Cool App",
+  "appId": "com.myapp.test",
+  "appName": "My App",
   "webDir": "www",
-  "bundledWebRuntime": false
+  "server": {
+    "androidScheme": "https"
+  }
 }
